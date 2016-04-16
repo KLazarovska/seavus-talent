@@ -32,12 +32,8 @@ public class MotionDetector{
 			}
 
 			if(count == 0){
-				images.add(device.getImage());
-				if(images.getLast().trim().isEmpty()){
-					System.out.println("the input is null - exit");
-					return;
-				}
 				count ++;
+				continue;
 			}
 			
 			compareImages(images.getLast(), images.get(images.size() - 2));
