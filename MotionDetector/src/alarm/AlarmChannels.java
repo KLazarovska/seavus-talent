@@ -2,5 +2,5 @@ package alarm;
 
 public interface AlarmChannels {
 
-	void startAlarm();
+	public void startAlarm();
 }

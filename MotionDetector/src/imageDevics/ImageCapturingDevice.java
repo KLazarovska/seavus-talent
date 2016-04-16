@@ -2,5 +2,5 @@ package imageDevics;
 
 public interface ImageCapturingDevice{
 	
-	String getImage();
+	public String getImage();
 }
