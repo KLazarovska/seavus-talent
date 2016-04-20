@@ -24,7 +24,7 @@ public class LibraryFunctions {
 		library.updateBook(isbn, title);
 	}
 	
-	public void unregisterBook(String isbn){
+	public void unregisterBook(String isbn) throws SQLException{
 		library.unregisterBook(isbn);
 	}
 	

@@ -61,13 +61,26 @@ public class Library{
 		
 		try {
 			statement = connection.prepareStatement("update book set title = ? where isbn = ?");
+			statement.setString(1, title);
+			statement.setString(2, isbn);
+			statement.addBatch();
+			statement.executeUpdate();
 		}finally{
 			connection.close();
 			statement.close();
 		}
 	}
 	
-	public void unregisterBook(String isbn){
+	public void unregisterBook(String isbn) throws SQLException{
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
 		
+		try {
+			statement = connection.prepareStatement("delete from book where isbn = " + isbn);
+			statement.executeQuery();
+		}finally{
+			connection.close();
+			statement.close();
+		}
 	}
 }

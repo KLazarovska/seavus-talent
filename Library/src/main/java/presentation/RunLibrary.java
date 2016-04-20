@@ -2,6 +2,7 @@ package presentation;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import dataaccess.HibernateLibrary;
 import domain.Book;
 import service.LibraryFunctions;
 
@@ -54,9 +55,14 @@ public class RunLibrary {
 				end = false;
 			}
 			else if(input == 4){
-				System.out.println("Enter the ISBN of the book you want to unregister:");
-				String isbn = in.next();
-				functions.unregisterBook(isbn);
+				
+				try {
+					System.out.println("Enter the ISBN of the book you want to unregister:");
+					String isbn = in.next();
+					functions.unregisterBook(isbn);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				end = false;
 			}
 			else if(input == 5){
