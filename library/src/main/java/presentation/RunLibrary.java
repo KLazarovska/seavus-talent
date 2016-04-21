@@ -30,7 +30,6 @@ public class RunLibrary {
 					String title = in.next();
 					Book book = new Book(isbn, title);
 					functions.registerBooks(book);
-					end = false;
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -41,7 +40,6 @@ public class RunLibrary {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				end = false;
 			}
 			else if(input == 3){		
 				try {
@@ -53,7 +51,6 @@ public class RunLibrary {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				end = false;
 			}
 			else if(input == 4){
 				
@@ -64,7 +61,6 @@ public class RunLibrary {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				end = false;
 			}
 			else if(input == 5){
 				end = true;
