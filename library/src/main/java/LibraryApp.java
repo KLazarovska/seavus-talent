@@ -2,7 +2,7 @@ import dataaccess.LibraryDao;
 import presentation.RunLibrary;
 import service.LibraryServices;
 
-public class Main {
+public class LibraryApp {
 
 	/**
 	 * @param args
