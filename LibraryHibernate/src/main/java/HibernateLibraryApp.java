@@ -20,7 +20,7 @@ public class HibernateLibraryApp {
 		configuration.getProperties()).build();
 		SessionFactory sessionFactory = configuration.addAnnotatedClass(Book.class).buildSessionFactory(serviceRegistry);
 		
-		RunLibrary library = new RunLibrary(new LibraryServices(new LibraryDao()),sessionFactory);
+		RunLibrary library = new RunLibrary(new LibraryServices(new LibraryDao(sessionFactory)));
 		library.run();
 		
 		

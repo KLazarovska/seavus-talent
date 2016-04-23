@@ -11,8 +11,13 @@ import org.hibernate.Transaction;
 import domain.Book;
 
 public class LibraryDao {
+	SessionFactory sessionFactory;
+	
+	public LibraryDao(SessionFactory sessionFactory){
+		this.sessionFactory = sessionFactory;
+	}
 
-	public void saveBook(Book book, SessionFactory sessionFactory) {
+	public void saveBook(Book book) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
@@ -29,7 +34,7 @@ public class LibraryDao {
 		}
 	}
 
-	public void listBooks(SessionFactory sessionFactory) {
+	public void listBooks() {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
@@ -54,7 +59,7 @@ public class LibraryDao {
 		}
 	}
 
-	public void updateBook(String isbn, String title, SessionFactory sessionFactory) {
+	public void updateBook(String isbn, String title) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
@@ -76,7 +81,7 @@ public class LibraryDao {
 		}
 	}
 
-	public void deleteBook(String isbn, SessionFactory sessionFactory) {
+	public void deleteBook(String isbn) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		try {

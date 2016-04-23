@@ -12,9 +12,8 @@ public class RunLibrary {
 	LibraryServices functions;
 	SessionFactory session;
 
-	public RunLibrary(LibraryServices functions, SessionFactory session) {
+	public RunLibrary(LibraryServices functions) {
 		this.functions = functions;
-		this.session = session;
 	}
 
 	public void run() {
@@ -31,19 +30,19 @@ public class RunLibrary {
 				System.out.println("Enter book title:");
 				String title = in.next();
 				Book book = new Book(isbn, title);
-				functions.registerBooks(book, session);
+				functions.registerBooks(book);
 			} else if (input == 2) {
-				functions.listRegisteredBooks(session);
+				functions.listRegisteredBooks();
 			} else if (input == 3) {
 				System.out.println("Enter the ISBN of the book you want to update:");
 				String isbn = in.next();
 				System.out.println("Enter the new title for the book:");
 				String title = in.next();
-				functions.updateRegisteredBook(isbn, title, session);
+				functions.updateRegisteredBook(isbn, title);
 			} else if (input == 4) {
 				System.out.println("Enter the ISBN of the book you want to unregister:");
 				String isbn = in.next();
-				functions.unregisterBook(isbn, session);
+				functions.unregisterBook(isbn);
 			} else if (input == 5) {
 				end = true;
 				System.out.println("END");
