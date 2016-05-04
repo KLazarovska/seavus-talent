@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	<h2>All tweets:</h2>
+	<table>
+		<tr th:each="tweet : ${tweets}">
+			<td>|</td>
+			<td th:text="${tweet.username}">Username</td>
+			<td>|</td>
+			<td th:text="${tweet.text}">Tweet</td>
+			<td>|</td>
+			<td th:text="${tweet.date}">Date</td>
+		</tr>
+	</table>
+
+	<h5>Enter username and tweet: </h5>
+	<h5>(to list all tweets by one user - just enter the username)</h5>
+	<h6> Username | Tweet </h6>
+	<form action="#" data-th-action="@{/tweets/edit}" data-th-object="${tweet}" method="post">
+		<input type="hidden" th:field="*{id}" />
+		<input type="text" th:field="*{username}" />
+		<input type="text" th:field="*{text}" />
+		<br/>
+		<button type="submit" name="action" value="save">save</button>
+		<button type="submit" name="action" value="delete">delete</button>
+		<br/>
+		<button type="submit" name="action" value="list">list tweets from user</button>
+	</form>
+
+</body>
+</html>
