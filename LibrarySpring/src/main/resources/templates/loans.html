@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/books">Books</a></li>
+		<li><a href="/magazines">Magazines</a></li>
+		<li><a href="/members">Members</a></li>
+		<li><a class="active" href="#">Loan</a></li>
+	</ul>
+
+	<h2>All loans:</h2>
+	<table>
+		<tr th:each="loan : ${loans}">
+			<td>|</td>
+			<td th:text="${loan.member.getName()}">Member name</td>
+			<td>|</td>
+			<td th:text="${loan.publication.getTitle()}">Publication title</td>
+			<td>|</td>
+			<td th:text="${loan.startDate}">Start date</td>
+			<td>|</td>
+			<td th:text="${loan.endDate}">End date</td>
+		</tr>
+	</table>
+
+	<h5>Enter name and title for the loan:</h5>
+	<h6>Name | Title</h6>
+	<form action="#" data-th-action="@{/loans/editLoans}" data-th-object="${loan}" method="post">
+		<input type="text" th:field="*{member}" /> 
+		<input type="text" th:field="*{publication}" /> <br />
+		<button type="submit" name="action" value="save">save</button>
+	</form>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+	<body>
+
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/books">Books</a></li>
+		<li><a href="/magazines">Magazines</a></li>
+		<li><a class="active" href="#">Members</a></li>
+		<li><a href="/loans">Loan</a></li>
+	</ul>
+
+	<h2>All memberships:</h2>
+	<h4>(Member name | Member email | Membership type | Start date | End date )</h4>
+	<table>
+		<tr th:each="member : ${members}">
+			<td th:text="${member.member.getName()}">Member name</td>
+			<td>|</td>
+			<td th:text="${member.member.getEmail()}">Member email</td>
+			<td>|</td>
+			<td th:text="${member.membershipType}">Membership type</td>
+			<td>|</td>
+			<td th:text="${member.startDate}">Start date</td>
+			<td>|</td>
+			<td th:text="${member.endDate}">End date</td>
+		</tr>
+	</table>
+	<br />
+
+	<h5>Enter members name and email:</h5>
+	<h6>(for update enter members name and the new email)</h6>
+	<h6>Name | Email</h6>
+	<form action="#" data-th-action="@{/members/editMember}" data-th-object="${member}" method="post">
+		<input type="hidden" th:field="*{id}" /> 
+		<input type="text" th:field="*{name}" /> 
+		<input type="text" th:field="*{email}"/>
+		<br />
+		<button type="submit" name="action" value="save">save</button>
+		<button type="submit" name="action" value="update">update</button>
+	</form>
+
+</body>
+	
+</html>

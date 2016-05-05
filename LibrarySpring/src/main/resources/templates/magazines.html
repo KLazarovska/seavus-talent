@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/books">Books</a></li>
+		<li><a class="active" href="#">Magazines</a></li>
+		<li><a href="/members">Members</a></li>
+		<li><a href="/loans">Loan</a></li>
+	</ul>
+
+	<h2>All magazines:</h2>
+	<table>
+		<tr th:each="magazine : ${magazines}">
+			<td>|</td>
+			<td th:text="${magazine.issn}">ISSN</td>
+			<td>|</td>
+			<td th:text="${magazine.title}">Title</td>
+		</tr>
+	</table>
+
+	<h5>Enter ISSN and title to update/delete magazine:</h5>
+	<h6>ISSN | Title</h6>
+	<form action="#" data-th-action="@{/magazines/edit}" data-th-object="${magazine}" method="post">
+		<input type="hidden" th:field="*{id}" /> 
+		<input type="text" th:field="*{issn}" /> 
+		<input type="text" th:field="*{title}"/>
+		<br />
+		<button type="submit" name="action" value="save">save</button>
+		<button type="submit" name="action" value="update">update</button>
+		<button type="submit" name="action" value="delete">delete</button>
+	</form>
+
+</body>
+</html>
